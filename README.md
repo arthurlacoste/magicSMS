@@ -22,7 +22,7 @@ npm start
 
 ## Dependencies
 
-MagicSMS is a nodeJS app using some usefull NPM modules like :
+MagicSMS is a [nodeJS](https://nodejs.org/en/) app using some usefull NPM modules like :
 - [Express](https://expressjs.com/)
 - [Moment](https://momentjs.com/docs/)
 - [EJS](http://ejs.co/)
