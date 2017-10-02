@@ -2,6 +2,12 @@
 
 MagicSMS is a webapp allowing __you__ to use a webinterface to send your SMS, from your Android device (don't work with iOS or Windows Mobile). At the moment, we using [smsgateway.me](https://smsgateway.me/) as a third party server. This app is just an interface for using this service, but __we can do more than that__ !
 
+## Interface
+
+We using a Messenger-like interface, you can fork it [here](https://github.com/arthurlacoste/fullscreen-flexbox-chat-facebook-messenger-like).
+
+![screenshot fullscreen flexbox chat facebook messenger like](https://github.com/arthurlacoste/fullscreen-flexbox-chat-facebook-messenger-like/raw/master/screenshot-fullscreen-flexbox-chat-facebook-messenger-like.png)
+
 ## Installation
 
 ### 1. You need to have an account on [smsgateway.me](https://smsgateway.me/)
@@ -29,6 +35,9 @@ MagicSMS is a [nodeJS](https://nodejs.org/en/) app using some usefull NPM module
 
 ## Todolist
 
-Using other services than Smsgateway.me, because smileys doesn't work ! :/
+- Add a way to logout
+- Using other services than Smsgateway.me, because smileys doesn't work ! :/
 
-I'm not affiliate to Smsgateway.me
+I'm not affiliate to Smsgateway.me.
+
+Thanks for Momcilo Popov for his [interface](https://codepen.io/Momciloo/pen/bEdbxY).
