@@ -11,7 +11,13 @@ MagicSMS is a webapp allowing __you__ to use a webinterface to send your SMS, fr
 ### 3. Install magicSMS :
 
 ```
-git clone
+git clone https://github.com/arthurlacoste/magicSMS
+```
+
+### 4. Start the server :
+
+```
+npm start
 ```
 
 ## Dependencies
