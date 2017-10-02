@@ -1,0 +1,15 @@
+# Node build artifacts
+node_modules
+/node_modules
+npm-debug.log
+coverage
+raw_data_exempe.json
+
+# Local development
+*.env
+*.dev
+.DS_Store
+.routine.md
+
+# Docker
+docker-compose.yml

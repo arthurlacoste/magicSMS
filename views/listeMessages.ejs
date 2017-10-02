@@ -1,0 +1,109 @@
+	<%
+	var hashCode = function(s){
+	  return JSON.stringify(s)
+	  .split("")
+	  .reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+	}
+
+var currentTab;
+if(typeof session.currentTab != 'undefined') {
+	var currentTab = session.currentTab;
+}
+	%>
+	<div class="container">
+			<div class="left">
+					<div class="top">
+							<input type="text" />
+							<a href="javascript:;" class="new-message new-message-ghost"></a>
+					</div>
+					<ul class="people">
+						<% for(var contact in listContacts) {
+
+							%>
+							<% if ( (typeof session.currentTab != 'undefined') && currentTab==hashCode(listContacts[contact].contact.number)) { %>
+								<li class="person active" data-chat="<%= hashCode(listContacts[contact].contact.number) %>" number="<%= listContacts[contact].contact.number %>">
+							<% } else { %>
+								<li class="person" data-chat="<%= hashCode(listContacts[contact].contact.number) %>" number="<%= listContacts[contact].contact.number %>">
+							<% } %>
+										<img src="https://avatars.dicebear.com/v1/female/<%= hashCode(listContacts[contact].contact.number) %>une/200.png" alt="" />
+										<span class="name"><%- contact %></span>
+										<span class="time"><%= moment.unix(listContacts[contact].created_at - (60*60*4)).locale('fr').format('HH:mm') %></span>
+										<span class="preview">
+											<% if (listContacts[contact].received_at!=0) { %>
+											<i class="fa fa-circle point" aria-hidden="true"></i>
+											<% } %>
+											<% if (listContacts[contact].message !='') { %>
+											<%- listContacts[contact].message %>
+											<% } else { %>
+												👻
+											<% } %>
+										</span>
+								</li>
+					 <% } %>
+					</ul>
+			</div>
+			<div class="right">
+
+					<div class="top">
+						<i class="fa fa-angle-left"></i>
+						<span>To: <span class="name">Mario</span></span>
+					</div>
+
+					<% for(var contact in messages){
+					var prev_date = 0;
+%>
+<% if ( (typeof session.currentTab != 'undefined') && currentTab==hashCode(messages[contact][0].contact.number)) { %>
+	<div class="chat active-chat" data-chat="<%= hashCode(messages[contact][0].contact.number) %>" other-data="<%= messages[contact][0].contact.number %>">
+<% } else { %>
+	<div class="chat" data-chat="<%= hashCode(messages[contact][0].contact.number) %>" other-data="<%= messages[contact][0].contact.number %>">
+<% } %>
+<%
+
+						for(var message in messages[contact]) {
+
+							if ((messages[contact][message].created_at-prev_date)>7200) {
+							%>
+
+										<div class="conversation-start">
+												<span><%= moment.unix(messages[contact][message].created_at - (60*60*4)).locale('fr').format('D MMMM YYYY, HH:mm') %></span>
+										</div>
+							<% }
+							prev_date = messages[contact][message].created_at;
+
+							 if (messages[contact][message].received_at!=0) { %>
+
+										<div class="bubble you">
+												<%- messages[contact][message].message %>
+
+										</div>
+								<%	} else { %>
+									<div class="bubble me" alt="<%- messages[contact][message].status %>">
+											<%- messages[contact][message].message %>
+											<% if(messages[contact][message].status == "pending" || messages[contact][message].status == "queued"){ %>
+											<div class="typing-indicator me">
+												<span></span>
+												<span></span>
+												<span></span>
+											</div>
+											<% } %>
+									</div>
+
+								<%	} %>
+
+							<% } %>
+						</div>
+					<% } %>
+
+					<div class="write">
+
+							<input type="hidden" class="form-control" name="number" id="number" value="" />
+
+							<input name="message" id="message" placeholder="Message" type="text" required />
+							<a href="javascript:;" class="write-link attach"></a>
+							<a href="javascript:;" class="write-link smiley"></a>
+							<a href="javascript:;" class="write-link send" id="sms-submit"></a>
+
+
+					</div>
+			</div>
+	</div>

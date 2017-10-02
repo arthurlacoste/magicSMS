@@ -1,0 +1,73 @@
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico" />
+
+  <title>SMS Magic</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/animate.min.css" >
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="wrapper" id="messages">
+    <div class="container">
+      <div class="left">
+        <div class="top">
+          <input type="text" />
+          <a href="javascript:;" class="new-message new-message-ghost"></a>
+        </div>
+
+        </div>
+        <div class="right">
+          <div class="top"><span>To: <span class="name"></span></span></div>
+
+          <div class="write">
+            <form method="post" id="sms-form">
+              <input type="hidden" class="form-control" name="number" id="number" value="" />
+
+              <input name="message" id="message" placeholder="Message" type="text" required />
+              <a href="javascript:;" class="write-link attach"></a>
+              <a href="javascript:;" class="write-link smiley"></a>
+              <button type="submit" id="sms-submit" class='message-submit' style="border: 0; background: transparent">
+                <a class="write-link send"></a>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% if(typeof newMessage != 'undefined') { %>
+    <script type="text/javascript">
+    var newNumberByURL = "<%= newMessage %>";
+    </script>
+<% } else { %>
+    <script type="text/javascript">
+    var newNumberByURL = "";
+    </script>
+<% } %>
+    <!-- jQuery -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-notify.min.js"></script>
+
+    <!-- Socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- messagesPage -->
+    <script src="/js/messagesPage.js"></script>
+
+  </body>
+  </html>
