@@ -25,7 +25,8 @@
     "serve-favicon": "^2.4.2",
     "sms-gateway-nodejs": "^0.1.0",
     "socket.io": "^1.7.3",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "minimist": "1.2.0"
   },
   "repository": {
     "type": "git",
